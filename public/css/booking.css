@@ -1,0 +1,315 @@
+  /* Additional styles for booking page */
+        .booking-hero {
+            min-height: 60vh;
+            padding-top: 120px;
+        }
+
+        .booking-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: var(--spacing-lg) var(--spacing-md);
+        }
+
+        .booking-form-wrapper {
+            background: var(--dark-card);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-lg);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .form-section {
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-lg);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .form-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .form-section h3 {
+            margin-bottom: var(--spacing-md);
+            color: var(--light-text);
+            font-size: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-md);
+        }
+
+        .service-options,
+        .barber-options,
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-sm);
+        }
+
+        .option-card {
+            padding: var(--spacing-md);
+            background: rgba(102, 126, 234, 0.05);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            text-align: center;
+        }
+
+        .option-card:hover {
+            border-color: var(--primary-color);
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .option-card.selected {
+            border-color: var(--primary-color);
+            background: rgba(102, 126, 234, 0.15);
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .option-card input[type="radio"] {
+            display: none;
+        }
+
+        .option-icon {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .option-title {
+            font-weight: 600;
+            color: var(--light-text);
+            margin-bottom: 0.3rem;
+        }
+
+        .option-price {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .option-duration {
+            color: var(--gray-text);
+            font-size: 0.9rem;
+        }
+
+        .barber-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .barber-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--primary-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .time-slot {
+            padding: var(--spacing-sm);
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .time-slot.disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .time-slot.disabled:hover {
+            border-color: var(--border-color);
+            background: rgba(102, 126, 234, 0.05);
+        }
+
+        .booking-summary {
+            background: var(--bg-white);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            margin-top: var(--spacing-lg);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-md);
+        }
+
+        .booking-summary h3 {
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            color: var(--primary-green);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 0;
+            border-bottom: 1px dashed var(--border-color);
+            font-size: 1rem;
+        }
+
+        .summary-item span {
+            color: var(--gray-text);
+            font-weight: 500;
+        }
+
+        .summary-item strong {
+            color: var(--text-main);
+            font-weight: 700;
+            text-align: right;
+        }
+
+        .summary-total {
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 2px solid var(--text-main);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .summary-total span {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        .summary-total #summaryTotal {
+            font-size: 1.5rem;
+            color: var(--primary-green);
+        }
+
+        .booking-notes {
+            background: rgba(245, 87, 108, 0.1);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--accent-color);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .booking-notes h4 {
+            color: var(--accent-color);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .booking-notes ul {
+            margin-left: 1.5rem;
+            color: var(--gray-text);
+        }
+
+        @media (max-width: 640px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .service-options,
+            .barber-options,
+            .time-slots {
+                grid-template-columns: 1fr;
+            }
+        }
+.custom-modal {
+        display: none;
+        position: fixed;
+        z-index: 1001;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(8px);
+    }
+
+    .modal-content {
+        background-color: var(--dark-card);
+        margin: 5% auto;
+        padding: var(--spacing-lg);
+        border: 1px solid var(--border-color);
+        width: 90%;
+        max-width: 500px;
+        border-radius: var(--radius-xl);
+        position: relative;
+        animation: slideDown 0.4s ease;
+    }
+
+    @keyframes slideDown {
+        from {
+            transform: translateY(-50px);
+            opacity: 0;
+        }
+
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    .close-modal {
+        position: absolute;
+        right: 20px;
+        top: 15px;
+        color: var(--gray-text);
+        font-size: 2rem;
+        cursor: pointer;
+    }
+
+    .payment-info-card {
+        background: rgba(102, 126, 234, 0.1);
+        padding: var(--spacing-md);
+        border-radius: var(--radius-md);
+        margin: 1.5rem 0;
+        text-align: center;
+        border: 1px dashed var(--primary-color);
+    }
+
+    .payment-steps ol {
+        margin-left: 1.5rem;
+        color: var(--light-text);
+        font-size: 0.95rem;
+    }
+
+    .success-overlay {
+        display: none;
+        position: fixed;
+        z-index: 2000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--dark-bg);
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .success-card {
+        max-width: 500px;
+        padding: var(--spacing-xl);
+    }
+
+    .success-icon {
+        font-size: 5rem;
+        margin-bottom: 2rem;
+    }
+
+    .booking-id-tag {
+        display: inline-block;
+        background: var(--primary-gradient);
+        padding: 0.5rem 1.5rem;
+        border-radius: var(--radius-lg);
+        margin: 1rem 0;
+        font-weight: 700;
+        letter-spacing: 2px;
+    }
