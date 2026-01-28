@@ -6,7 +6,6 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
-use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\Layout\Split;
 use Filament\Tables\Columns\Layout\Stack;
@@ -23,6 +22,7 @@ class BookingsTable
                 // Komponen di dalam Split akan tampil berjejer di Desktop,
                 // tapi akan disusun khusus di Mobile.
                 Split::make([
+                    TextColumn::make('booking_code'),
 
                     // BAGIAN A: Identitas Pelanggan (Kiri)
                     Stack::make([
@@ -73,23 +73,19 @@ class BookingsTable
                         ->imageHeight(100)
                         ->label('Bukti Transfer')
                         ->visibility('public'),
-
                     TextColumn::make('service.name')
                         ->label('Service')
                         ->prefix('Layanan: ')
                         ->visibleFrom('xs')
                         ->hiddenFrom('md'), // Hanya muncul di HP
-
                     TextColumn::make('payment_method')
                         ->badge()
                         ->label('Metode Bayar'),
-
-                    IconColumn::make('payment_status')
-                        ->boolean()
-                        ->trueIcon('heroicon-o-check-circle')
-                        ->falseIcon('heroicon-o-x-circle')
-                        ->label('Paid?'),
-
+                    TextColumn::make('payment_status')
+                        ->label('Status Pembayaran')
+                        ->badge()
+                        ->formatStateUsing(fn ($state) => $state ? 'Sudah DP' : 'Belum DP')
+                        ->color(fn ($state) => $state ? 'success' : 'danger'),
                     TextColumn::make('booking_date')
                         ->date()
                         ->formatStateUsing(fn ($state, $record) => $state.' '.$record->booking_time) // Gabung Tanggal & Jam
@@ -117,7 +113,6 @@ class BookingsTable
             ->toolbarActions([
                 BulkActionGroup::make([
                     // DeleteBulkAction::make(),
-
                 ]),
             ]);
     }

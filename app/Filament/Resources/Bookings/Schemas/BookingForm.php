@@ -30,16 +30,25 @@ class BookingForm
                 Select::make('service_id')
                     ->label('Layanan')
                     ->relationship('service', 'name')
+                    ->native(false)
                     ->required(),
                 Select::make('barber_id')
                     ->label('Barber')
                     ->relationship('barber', 'name')
+                    ->native(false)
                     ->required(),
                 DatePicker::make('booking_date')
                     ->required(),
                 TimePicker::make('booking_time')
                     ->required(),
                 Toggle::make('payment_status')
+                    ->label('Status Pembayaran')
+                    ->helperText('Menandakan apakah pelanggan sudah membayar DP')
+                    ->onColor('success')
+                    ->offColor('danger')
+                    ->onIcon('heroicon-m-check-circle')
+                    ->offIcon('heroicon-m-x-circle')
+                    ->inline(false)
                     ->required(),
                 Textarea::make('notes')
                     ->default(null)

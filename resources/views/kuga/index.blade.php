@@ -151,42 +151,14 @@
                 <p>Lihat transformasi gaya yang telah kami ciptakan</p>
             </div>
             <div class="gallery-grid">
-                <div class="gallery-item fade-in">
-                    <img src="images/gallery1.jpg" alt="Haircut Result 1" class="gallery-img">
-                    <div class="gallery-overlay">
-                        <span class="gallery-overlay-text">Modern Fade</span>
+                @foreach ($galeris as $galeri)
+                    <div class="gallery-item fade-in">
+                        <img src="{{ asset('storage/' . $galeri->image) }}" alt="{{ $galeri->name }}" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <span class="gallery-overlay-text">{{ $galeri->name }}</span>
+                        </div>
                     </div>
-                </div>
-                <div class="gallery-item fade-in">
-                    <img src="images/gallery2.jpg" alt="Haircut Result 2" class="gallery-img">
-                    <div class="gallery-overlay">
-                        <span class="gallery-overlay-text">Classic Pompadour</span>
-                    </div>
-                </div>
-                <div class="gallery-item fade-in">
-                    <img src="images/gallery3.jpg" alt="Haircut Result 3" class="gallery-img">
-                    <div class="gallery-overlay">
-                        <span class="gallery-overlay-text">Undercut Style</span>
-                    </div>
-                </div>
-                <div class="gallery-item fade-in">
-                    <img src="images/gallery4.jpg" alt="Haircut Result 4" class="gallery-img">
-                    <div class="gallery-overlay">
-                        <span class="gallery-overlay-text">Beard Grooming</span>
-                    </div>
-                </div>
-                <div class="gallery-item fade-in">
-                    <img src="images/gallery5.jpg" alt="Haircut Result 5" class="gallery-img">
-                    <div class="gallery-overlay">
-                        <span class="gallery-overlay-text">Textured Cut</span>
-                    </div>
-                </div>
-                <div class="gallery-item fade-in">
-                    <img src="images/gallery6.jpg" alt="Haircut Result 6" class="gallery-img">
-                    <div class="gallery-overlay">
-                        <span class="gallery-overlay-text">Color Treatment</span>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -421,9 +393,9 @@
             </div>
 
             <!-- <div style="text-align: center; margin-top: 2rem;" class="fade-in">
-                            <a href="journal.html" class="btn btn-outline" style="padding: 1rem 3rem;">Lihat Semua Style Journal
-                                (13+) →</a>
-                        </div> -->
+                                        <a href="journal.html" class="btn btn-outline" style="padding: 1rem 3rem;">Lihat Semua Style Journal
+                                            (13+) →</a>
+                                    </div> -->
         </div>
     </section>
 
