@@ -31,6 +31,7 @@
                     ['href' => '/#galeri', 'label' => 'Galeri'],
                     ['href' => '/#harga', 'label' => 'Harga'],
                     ['href' => route('booking'), 'label' => 'Booking', 'active' => request()->routeIs('booking')],
+                    ['href' => route('check-booking'), 'label' => 'Cek Booking', 'active' => request()->routeIs('check-booking')],
                     ['href' => '/#kontak', 'label' => 'Kontak']
                 ] as $item)
                     <li>
@@ -85,6 +86,7 @@
                 ['href' => '/#galeri', 'label' => 'Galeri'],
                 ['href' => '/#harga', 'label' => 'Harga'],
                 ['href' => route('booking'), 'label' => 'Booking'],
+                ['href' => route('check-booking'), 'label' => 'Cek Booking'],
                 ['href' => '/#kontak', 'label' => 'Kontak']
             ] as $item)
                 <a href="{{ $item['href'] }}" 

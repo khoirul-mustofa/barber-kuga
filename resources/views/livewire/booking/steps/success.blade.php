@@ -16,7 +16,10 @@
         <p class="text-3xl font-mono font-bold text-emerald-700 dark:text-emerald-400 tracking-wider select-all">
             {{ $booking_code }}
         </p>
-        <p class="text-xs text-emerald-500 dark:text-emerald-400 mt-2">Mohon simpan kode ini.</p>
+        <p class="text-xs text-emerald-500 dark:text-emerald-400 mt-2">Simpan kode ini untuk cek status booking.</p>
+        <div class="mt-4">
+             <a href="{{ route('check-booking') }}" target="_blank" class="text-sm text-emerald-600 hover:text-emerald-800 underline">Cek Status Booking Sekarang -></a>
+        </div>
     </div>
 
     <div class="flex justify-center space-x-4">
