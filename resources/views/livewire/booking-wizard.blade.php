@@ -32,7 +32,7 @@
             </div>
 
             {{-- Main Card --}}
-            <div class="bg-white dark:bg-emerald-900 shadow-xl rounded-2xl p-6 sm:p-8 border border-emerald-100 dark:border-emerald-800 relative overflow-hidden">
+            <div class="bg-white dark:bg-emerald-900 shadow-xl rounded-2xl p-6 sm:p-8 border border-emerald-100 dark:border-emerald-800 relative overflow-hidden transition-colors duration-300">
                 {{-- Step Title --}}
                 <h2 class="text-2xl font-bold text-emerald-900 dark:text-white mb-6 border-b border-emerald-100 dark:border-emerald-800 pb-4">
                     @if ($step == 1) Pilih Layanan
@@ -89,7 +89,7 @@
         {{-- RIGHT COLUMN: SUMMARY PANEL (Sticky) --}}
         <div class="lg:col-span-4">
             <div class="sticky top-24">
-                <div class="bg-white dark:bg-emerald-900 shadow-xl rounded-2xl p-6 border border-emerald-100 dark:border-emerald-800">
+                <div class="bg-white dark:bg-emerald-900 shadow-xl rounded-2xl p-6 border border-emerald-100 dark:border-emerald-800 transition-colors duration-300">
                     <h3 class="text-lg font-bold text-emerald-950 dark:text-white mb-4 flex items-center">
                         <span class="bg-emerald-100 text-emerald-600 p-1.5 rounded-md mr-2">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

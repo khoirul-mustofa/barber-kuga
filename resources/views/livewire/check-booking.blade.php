@@ -14,7 +14,7 @@
                     <div>
                         <label for="booking_code" class="block text-sm font-medium text-emerald-900 dark:text-emerald-100 mb-2">Kode Booking</label>
                         <input type="text" id="booking_code" wire:model="booking_code"
-                            class="w-full rounded-lg border-emerald-200 p-2 focus:border-emerald-500 focus:ring-emerald-500 dark:bg-emerald-800 dark:border-emerald-700 dark:text-white dark:placeholder-emerald-400"
+                            class="w-full rounded-lg border-emerald-200 p-2 focus:border-yellow-500 focus:ring-yellow-500 dark:bg-emerald-950 dark:border-emerald-700 dark:text-white dark:placeholder-emerald-400 dark:focus:border-yellow-500 dark:focus:ring-yellow-500 transition-colors"
                             placeholder="Contoh: BKG-12345">
                         @error('booking_code') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
                     </div>
@@ -23,13 +23,13 @@
                     <div>
                         <label for="phone" class="block text-sm font-medium text-emerald-900 dark:text-emerald-100 mb-2">Nomor WhatsApp</label>
                         <input type="text" id="phone" wire:model="phone"
-                            class="w-full rounded-lg border-emerald-200 p-2 focus:border-emerald-500 focus:ring-emerald-500 dark:bg-emerald-800 dark:border-emerald-700 dark:text-white dark:placeholder-emerald-400"
+                            class="w-full rounded-lg border-emerald-200 p-2 focus:border-yellow-500 focus:ring-yellow-500 dark:bg-emerald-950 dark:border-emerald-700 dark:text-white dark:placeholder-emerald-400 dark:focus:border-yellow-500 dark:focus:ring-yellow-500 transition-colors"
                             placeholder="Contoh: 08123456789">
                         @error('phone') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
                     </div>
 
                     <button type="submit"
-                        class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition-colors">
+                        class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-800 dark:hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 transition-colors">
                         <span wire:loading.remove>Cek Status</span>
                         <span wire:loading>Memproses...</span>
                     </button>

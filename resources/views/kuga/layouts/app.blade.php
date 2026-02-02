@@ -22,7 +22,7 @@
     }
 </script>
 
-<body>
+<body class="bg-white text-emerald-950 dark:bg-emerald-950 dark:text-emerald-50 antialiased transition-colors duration-300 ease-in-out">
     <!-- HEADER & NAVIGATION -->
     @include('kuga.partials.header')
 

@@ -6,7 +6,7 @@
     }" 
     @scroll.window="scrolled = (window.pageYOffset > 20)"
     :class="{ 
-        'bg-white/95 backdrop-blur-md shadow-md py-2': scrolled || !isHome,
+        'bg-white/95 dark:bg-emerald-950/95 backdrop-blur-md shadow-md py-2': scrolled || !isHome,
         'bg-transparent py-4': !scrolled && isHome
     }">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -16,9 +16,9 @@
                 <img src="{{ asset('images/logo.png') }}" alt="KUGA Logo" class="h-10 w-auto transform transition group-hover:scale-105">
                 <div class="flex flex-col">
                     <span class="text-xl font-bold tracking-wide font-heading transition-colors duration-300"
-                        :class="(scrolled || !isHome) ? 'text-green-900' : 'text-white'">KUGA</span>
+                        :class="(scrolled || !isHome) ? 'text-emerald-900 dark:text-white' : 'text-white'">KUGA</span>
                     <span class="text-[0.65rem] font-bold uppercase tracking-[0.2em] -mt-1 transition-colors duration-300"
-                        :class="(scrolled || !isHome) ? 'text-yellow-600' : 'text-yellow-400'">Barbershop</span>
+                        :class="(scrolled || !isHome) ? 'text-yellow-600 dark:text-yellow-500' : 'text-yellow-400'">Barbershop</span>
                 </div>
             </a>
 
@@ -38,8 +38,8 @@
                         <a href="{{ $item['href'] }}" 
                            class="text-sm font-semibold transition-colors duration-200 relative group"
                            :class="{
-                               'text-emerald-700': {{ ($item['active'] ?? false) ? 'true' : 'false' }} && (scrolled || !isHome),
-                               'text-emerald-800 hover:text-emerald-600': !{{ ($item['active'] ?? false) ? 'true' : 'false' }} && (scrolled || !isHome),
+                               'text-emerald-800 dark:text-emerald-100': {{ ($item['active'] ?? false) ? 'true' : 'false' }} && (scrolled || !isHome),
+                               'text-emerald-800 dark:text-emerald-100 hover:text-emerald-600 dark:hover:text-yellow-400': !{{ ($item['active'] ?? false) ? 'true' : 'false' }} && (scrolled || !isHome),
                                'text-white hover:text-yellow-400': !scrolled && isHome
                            }">
                             {{ $item['label'] }}
