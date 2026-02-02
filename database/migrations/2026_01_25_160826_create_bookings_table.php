@@ -13,28 +13,28 @@ return new class extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-            $table->string('booking_code');
+            $table->string('booking_code')->unique();
             $table->string('name');
-            $table->string('email')->nullable();
             $table->string('phone');
-            // Relasi dengan tabel layanan
             $table->unsignedBigInteger('service_id');
-            // Relasi dengan Barber
             $table->unsignedBigInteger('barber_id');
-            // Tanggal dan jam booking
             $table->date('booking_date');
             $table->time('booking_time');
-            // status dp pembayaran
-            $table->boolean('payment_status')->default(false);
-            // catatan
+            $table->enum('status', [
+                'waiting_payment',
+                'waiting_verification',
+                'confirmed',
+                'rejected',
+                'expired',
+                'completed',
+            ])->default('waiting_payment');
             $table->text('notes')->nullable();
-            // metode pembayaran
-            $table->enum('payment_method', ['bca', 'mandiri', 'bni', 'dana', 'qris', 'bri']);
-            // bukti pembayaran dp
-            $table->string('proof_of_payment');
-            $table->decimal('dp_amount');
-            $table->decimal('total_price');
-
+            $table->enum('payment_method', ['bca', 'mandiri', 'bni', 'dana', 'qris', 'bri'])->nullable();
+            $table->string('payment_proof')->nullable();
+            $table->integer('dp_amount');
+            $table->integer('total_price');
+            $table->timestamp('verified_at')->nullable();
+            $table->index(['booking_date', 'booking_time']);
             $table->timestamps();
         });
     }
