@@ -18,7 +18,7 @@ class SpecialPackageResource extends Resource
 {
     protected static ?string $model = SpecialPackage::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::Star;
 
     protected static ?string $recordTitleAttribute = 'name';
 

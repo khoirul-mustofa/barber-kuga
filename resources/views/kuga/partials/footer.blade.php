@@ -67,7 +67,7 @@
         </div>
 
         <div class="border-t border-emerald-900 pt-8 mt-8 text-center text-sm text-emerald-100/40">
-            <p>&copy; 2026 KUGA Barbershop. Hak cipta dilindungi undang-undang. Didesain dengan ❤️ untuk PALCUMPING.GL</p>
+            <p>&copy; 2026 KUGA Barbershop.</p>
         </div>
     </div>
 </footer>
