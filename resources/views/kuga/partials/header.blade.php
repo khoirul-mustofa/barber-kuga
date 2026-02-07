@@ -14,7 +14,7 @@
             <!-- Logo -->
             <a href="/" class="flex items-center gap-3 group">
                 <img src="{{ asset('images/logo.png') }}" alt="KUGA Logo" class="h-10 w-auto transform transition group-hover:scale-105">
-                <div class="flex flex-col">
+                <div class="flex flex-col" translate="no">
                     <span class="text-xl font-bold tracking-wide font-heading transition-colors duration-300"
                         :class="(scrolled || !isHome) ? 'text-emerald-900 dark:text-white' : 'text-white'">KUGA</span>
                     <span class="text-[0.65rem] font-bold uppercase tracking-[0.2em] -mt-1 transition-colors duration-300"
