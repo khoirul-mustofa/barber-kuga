@@ -145,7 +145,7 @@
 
                     {{-- Help Support --}}
                     <div class="mt-6 pt-4 border-t border-emerald-100 dark:border-emerald-800 text-center">
-                        <p class="text-xs text-emerald-400">Butuh bantuan? <a href="#" class="text-emerald-600 hover:text-emerald-700 underline">Hubungi Admin</a></p>
+                        <p class="text-xs text-emerald-400">Butuh bantuan? <a href="https://wa.me/6281256626112" class="text-emerald-600 hover:text-emerald-700 underline">Hubungi Admin</a></p>
                     </div>
                 </div>
             </div>
