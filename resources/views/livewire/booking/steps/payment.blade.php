@@ -11,8 +11,8 @@
                     : 'border-emerald-100 dark:border-emerald-800 hover:border-emerald-300 dark:hover:border-emerald-600 bg-white dark:bg-emerald-900/30'
                 }}">
                     <div class="flex-shrink-0">
-                         @if($method->icon && Storage::exists($method->icon))
-                            <img src="{{ Storage::url($method->icon) }}" class="h-8 w-8 object-contain">
+                         @if($method->icon && \Illuminate\Support\Facades\Storage::disk('public')->exists($method->icon))
+                            <img src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($method->icon) }}" class="h-8 w-8 object-contain">
                          @else
                             <span class="text-2xl">{{ $method->icon ?? '💳' }}</span>
                          @endif
@@ -37,16 +37,63 @@
     <!-- QRIS Display -->
     @if($payment_method && $selectedMethod = $payment_methods->firstWhere('code.value', $payment_method))
         @if($selectedMethod->code === \App\Enums\PaymentMethods::QRIS || $selectedMethod->image)
-            <div class="bg-white dark:bg-gray-800 p-6 rounded-xl border border-dashed border-2 border-emerald-500 text-center shadow-inner mt-6">
-                <h4 class="text-emerald-800 dark:text-emerald-400 font-bold mb-2">Scan QR Code</h4>
-                <div class="bg-white p-3 inline-block rounded-lg shadow-sm">
-                    @if($selectedMethod->image)
-                        <img src="{{ Storage::url($selectedMethod->image) }}" alt="QR Code" class="w-48 h-48 mx-auto object-contain">
-                    @else
-                        <img src="{{ asset('images/qr-code.svg') }}" alt="QRIS" class="w-48 h-48 mx-auto">
-                    @endif
+            <div x-data="{ showQrisModal: false }" class="mt-6">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl border border-dashed border-2 border-emerald-500 text-center shadow-inner">
+                    <h4 class="text-emerald-800 dark:text-emerald-400 font-bold mb-2">Scan QR Code</h4>
+                    
+                    <div class="bg-white p-3 inline-block rounded-lg shadow-sm cursor-pointer transition-all duration-200 border-2 border-transparent hover:border-emerald-500 hover:shadow-md hover:scale-105"
+                         @click="showQrisModal = true"
+                         title="Klik untuk memperbesar">
+                        @if($selectedMethod->image)
+                            <img src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($selectedMethod->image) }}" alt="QR Code" class="w-48 h-48 mx-auto object-contain">
+                        @else
+                            <div class="w-48 h-48 flex items-center justify-center bg-gray-50 dark:bg-gray-900 rounded-lg border-2 border-dashed border-gray-200 dark:border-gray-700">
+                                <svg class="w-12 h-12 text-gray-300 dark:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
+                                </svg>
+                            </div>
+                        @endif
+                         <p class="text-xs text-emerald-600 mt-2 font-medium">✨ Klik gambar untuk memperbesar</p>
+                    </div>
+                     <p class="text-sm text-gray-500 mt-2">Scan untuk melakukan pembayaran.</p>
                 </div>
-                 <p class="text-sm text-gray-500 mt-2">Scan untuk melakukan pembayaran.</p>
+
+                <!-- Modal Dialog -->
+                <div x-show="showQrisModal" 
+                     style="display: none;"
+                     class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in"
+                     x-transition:enter="transition ease-out duration-300"
+                     x-transition:enter-start="opacity-0"
+                     x-transition:enter-end="opacity-100"
+                     x-transition:leave="transition ease-in duration-200"
+                     x-transition:leave-start="opacity-100"
+                     x-transition:leave-end="opacity-0">
+                    
+                    <div @click.away="showQrisModal = false" 
+                         class="relative bg-white dark:bg-gray-800 p-4 rounded-2xl max-w-lg w-full shadow-2xl transform transition-all"
+                         x-transition:enter="transition ease-out duration-300"
+                         x-transition:enter-start="opacity-0 scale-95"
+                         x-transition:enter-end="opacity-100 scale-100"
+                         x-transition:leave="transition ease-in duration-200"
+                         x-transition:leave-start="opacity-100 scale-100"
+                         x-transition:leave-end="opacity-0 scale-95">
+                        
+                        <button @click="showQrisModal = false" class="absolute -top-4 -right-4 bg-red-500 hover:bg-red-600 text-white rounded-full p-2 shadow-lg transition-colors z-10">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                        </button>
+
+                        <div class="bg-white p-4 rounded-xl">
+                            @if($selectedMethod->image)
+                                <img src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($selectedMethod->image) }}" alt="QR Code Large" class="w-full h-auto object-contain rounded-lg">
+                            @else
+                                <div class="w-full aspect-square flex items-center justify-center bg-gray-50 rounded-lg border-2 border-dashed border-gray-200">
+                                    <span class="text-gray-400">No Image Available</span>
+                                </div>
+                            @endif
+                        </div>
+                        <p class="text-center text-gray-500 dark:text-gray-400 mt-4 text-sm">Silakan scan QR Code di atas</p>
+                    </div>
+                </div>
             </div>
         @endif
     @endif
