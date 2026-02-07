@@ -19,7 +19,11 @@
                     <a href="https://wa.me/6281256626112" target="_blank" class="text-emerald-100/70 hover:text-green-500 transition-colors duration-300">
                         <i class="fab fa-whatsapp text-xl"></i>
                     </a>
+                    <a href="https://www.facebook.com/share/17qoGkZkY6" target="_blank" class="text-emerald-100/70 hover:text-blue-500 transition-colors duration-300">
+                        <i class="fab fa-facebook-f text-xl"></i>
+                    </a>
                 </div>
+
             </div>
 
             <!-- Quick Links -->
@@ -38,9 +42,9 @@
             <div>
                 <h3 class="text-lg font-bold text-white mb-4">Layanan</h3>
                 <ul class="space-y-2">
-                    @foreach(['Classic Haircut', 'Premium Styling', 'Beard Grooming', 'Hair Treatment'] as $service)
+                    @foreach(\App\Models\Service::take(4)->get() as $service)
                     <li>
-                        <a href="#layanan" class="text-emerald-100/60 hover:text-yellow-500 transition-colors text-sm">{{ $service }}</a>
+                        <a href="#layanan" class="text-emerald-100/60 hover:text-yellow-500 transition-colors text-sm">{{ $service->name }}</a>
                     </li>
                     @endforeach
                 </ul>
