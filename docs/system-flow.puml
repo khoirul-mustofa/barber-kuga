@@ -1,0 +1,109 @@
+@startuml
+' Define styling for a professional look
+skinparam BoxPadding 10
+skinparam ParticipantPadding 15
+skinparam RoundCorner 10
+skinparam Shadowing true
+skinparam Handwritten false
+skinparam DefaultFontName "Arial"
+skinparam DefaultFontSize 12
+
+' Color Palette
+skinparam ProtocolBackgroundColor #FFFFFF
+skinparam SequenceLifeLineBorderColor #444444
+skinparam SequenceLifeLineBackgroundColor #E0E0E0
+skinparam ActorBackgroundColor #FEF9C3
+skinparam ActorBorderColor #CA8A04
+skinparam ParticipantBackgroundColor #DCFCE7
+skinparam ParticipantBorderColor #16A34A
+skinparam DatabaseBackgroundColor #E0F2FE
+skinparam DatabaseBorderColor #0284C7
+skinparam InterfaceBackgroundColor #F3F4F6
+skinparam InterfaceBorderColor #4B5563
+
+' Title
+title KUGA Barbershop - System Flow Diagram
+
+' Actors & Participants
+actor "Pelanggan" as User
+participant "Frontend UI\n(Web/Mobile)" as UI
+participant "Backend System\n(Laravel/Livewire)" as Backend
+database "Database" as DB
+participant "WhatsApp Gateway\n(Fonnte)" as WA
+actor "Administrator" as Admin
+
+' 1. Booking Initialization
+group #F0FDF4 Tahap 1: Inisiasi Booking
+    User -> UI: Akses Website & Pilih Layanan
+    UI -> Backend:  Get Services & Barbers list
+    Backend -> DB: Select * from services
+    DB --> Backend: Return data
+    Backend --> UI: Tampilkan Daftar Layanan & Barber
+
+    User -> UI: Pilih Tanggal & Waktu
+    UI -> Backend: Cek Slot Waktu (Date, BarberID)
+    Backend -> DB: Query availability
+    DB --> Backend: Return booked slots
+    Backend --> UI: Tampilkan Slot Tersedia
+end
+
+' 2. Booking Submission
+group #FEF9C3 Tahap 2: Pengajuan & Pembayaran
+    User -> UI: Upload Bukti Transfer & Submit
+    UI -> Backend: POST /booking (Data + Image)
+    activate Backend
+        Backend -> DB: Insert Booking (Status: waiting_verification)
+        activate DB
+        DB --> Backend: Booking ID Created
+        deactivate DB
+        Backend --> UI: Tampilkan "Menunggu Konfirmasi"
+    deactivate Backend
+end
+
+' 3. Admin Verification
+group #E0F2FE Tahap 3: Verifikasi Admin
+    Admin -> Backend: Buka Dashboard Admin
+    Backend -> DB: Fetch Bookings (waiting_verification)
+    DB --> Backend: Return List
+    Backend --> Admin: Tampilkan Data Pesanan
+
+    alt Pembayaran Valid
+        Admin -> Backend: Approve Booking
+        activate Backend
+            Backend -> DB: Update Status -> 'confirmed'
+            Backend -> WA: Kirim Notifikasi (To: Customer)
+            activate WA
+                WA --> User: WhatsApp: "Booking Terkonfirmasi!"
+            deactivate WA
+        deactivate Backend
+    else Pembayaran Tidak Valid
+        Admin -> Backend: Reject Booking
+        activate Backend
+            Backend -> DB: Update Status -> 'rejected'
+            Backend -> WA: Kirim Notifikasi Penolakan
+            activate WA
+                WA --> User: WhatsApp: "Booking Ditolak/Gagal"
+            deactivate WA
+        deactivate Backend
+    end
+end
+
+' 4. Service Execution
+group #F3F4F6 Tahap 4: Pelaksanaan Layanan
+    User -> Admin: Datang ke Lokasi (Tunjuk Bukti)
+    Admin -> Backend: Validasi Booking Code
+    
+    User -> Admin: Pelunasan Pembayaran (50%)
+    Admin -> Backend: Update Status -> 'completed'
+    activate Backend
+        Backend -> DB: Save Changes
+        Backend --> Admin: Update Success UI
+    deactivate Backend
+    
+    note right of Admin
+        Sistem mencatat transaksi selesai
+        dan menambah history pelanggan.
+    end note
+end
+
+@enduml
