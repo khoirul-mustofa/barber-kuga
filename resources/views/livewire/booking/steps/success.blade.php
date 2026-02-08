@@ -27,9 +27,12 @@
             class="px-6 py-3 border border-transparent text-base font-medium rounded-lg text-emerald-800 bg-emerald-100 hover:bg-emerald-200 transition">
             Kembali ke Beranda
         </a>
-         <button onclick="window.print()"
-            class="px-6 py-3 border border-emerald-300 dark:border-emerald-700 text-base font-medium rounded-lg text-emerald-700 dark:text-emerald-300 bg-white dark:bg-emerald-900/50 hover:bg-emerald-50 dark:hover:bg-emerald-800 transition">
-            Cetak Detail
-        </button>
+        <a href="{{ route('booking.pdf', $booking_code) }}" target="_blank"
+            class="px-6 py-3 border border-emerald-300 dark:border-emerald-700 text-base font-medium rounded-lg text-emerald-700 dark:text-emerald-300 bg-white dark:bg-emerald-900/50 hover:bg-emerald-50 dark:hover:bg-emerald-800 transition flex items-center justify-center">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+            Download PDF
+        </a>
     </div>
 </div>

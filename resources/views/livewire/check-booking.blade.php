@@ -49,17 +49,24 @@
                 <div class="bg-white dark:bg-emerald-900 shadow-xl rounded-2xl overflow-hidden border border-emerald-100 dark:border-emerald-800 animate-fade-in-up">
                     <div class="bg-emerald-50 dark:bg-emerald-800 p-4 border-b border-emerald-100 dark:border-emerald-700 flex justify-between items-center">
                         <span class="text-sm font-medium text-emerald-600 dark:text-emerald-300">Status</span>
-                        @if($booking->status->value == 'waiting_payment')
-                            <span class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs font-bold uppercase tracking-wide">Menunggu Pembayaran</span>
-                        @elseif($booking->status->value == 'waiting_verification')
-                             <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-bold uppercase tracking-wide">Menunggu Verifikasi</span>
-                        @elseif($booking->status->value == 'confirmed')
-                             <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-bold uppercase tracking-wide">Dikonfirmasi</span>
-                        @elseif($booking->status->value == 'completed')
-                             <span class="px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-xs font-bold uppercase tracking-wide">Selesai</span>
-                        @elseif($booking->status->value == 'cancelled')
-                             <span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-xs font-bold uppercase tracking-wide">Dibatalkan</span>
-                        @endif
+                        <div class="flex items-center space-x-2">
+                             <a href="{{ route('booking.pdf', $booking->booking_code) }}" target="_blank" class="p-1 text-emerald-600 hover:text-emerald-800 dark:text-emerald-400 dark:hover:text-emerald-200 transition" title="Download PDF">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                </svg>
+                            </a>
+                            @if($booking->status->value == 'waiting_payment')
+                                <span class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs font-bold uppercase tracking-wide">Menunggu Pembayaran</span>
+                            @elseif($booking->status->value == 'waiting_verification')
+                                 <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-bold uppercase tracking-wide">Menunggu Verifikasi</span>
+                            @elseif($booking->status->value == 'confirmed')
+                                 <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-bold uppercase tracking-wide">Dikonfirmasi</span>
+                            @elseif($booking->status->value == 'completed')
+                                 <span class="px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-xs font-bold uppercase tracking-wide">Selesai</span>
+                            @elseif($booking->status->value == 'cancelled')
+                                 <span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-xs font-bold uppercase tracking-wide">Dibatalkan</span>
+                            @endif
+                        </div>
                     </div>
                     
                     <div class="p-6 space-y-4">

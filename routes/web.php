@@ -14,3 +14,6 @@ Route::get('/cek-booking', \App\Livewire\CheckBooking::class)->name('check-booki
 
 Route::get('/journal', [JournalController::class, 'index'])->name('journal.index');
 Route::get('/journal/{title}', [JournalController::class, 'view'])->name('journal.view');
+
+Route::get('/booking/{code}/pdf', [\App\Http\Controllers\BookingPdfController::class, 'download'])->name('booking.pdf');
+
