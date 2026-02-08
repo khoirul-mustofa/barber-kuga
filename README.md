@@ -13,7 +13,7 @@
 **Sistem Booking Barber yang Nggak Bikin Pusing**  
 *Sat-set. Rapi. Kelar.*
 
-[🌐 Cek Barang Aslinya (Live Demo)](https://barber.muslabs.online) · [🐛 Nemuin Bug? Lapor Gih](https://github.com/khoirul-mustofa/barber-kuga/issues) · [☕ Traktir Kopi (Optional)](https://github.com/khoirul-mustofa)
+[🌐 Cek Barang Aslinya (Live Demo)](https://barber.muslabs.online) · [🐛 Nemuin Bug? Lapor Gih](https://github.com/khoirul-mustofa/barber-kuga/issues) · [☕ Traktir Kopi (Optional)](https://saweria.co/khmf)
 
 </div>
 
