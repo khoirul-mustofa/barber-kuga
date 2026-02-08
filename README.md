@@ -4,8 +4,8 @@
 ### *Ganteng Itu Takdir, Rapi Itu Pilihan.*
 
 ![Laravel](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
-![Filament](https://img.shields.io/badge/Filament-3.x-FBBF24?style=for-the-badge&logo=filament&logoColor=black)
-![TailwindCSS](https://img.shields.io/badge/Tailwind-CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Filament](https://img.shields.io/badge/Filament-4.x-FBBF24?style=for-the-badge&logo=filament&logoColor=black)
+![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-4.x-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![Livewire](https://img.shields.io/badge/Livewire-3.x-4E56A6?style=for-the-badge&logo=livewire&logoColor=white)
 
 <br/>
